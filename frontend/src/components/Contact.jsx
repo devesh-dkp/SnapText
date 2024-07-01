@@ -12,13 +12,14 @@ function Contact({ onClose }) {
     e.preventDefault();
     // Here you can handle the form submission, e.g., send feedback to backend
     // console.log({ contactType, feedback , email});
-    axios.post("/feedback", { contactType, feedback, email })
-    .then((response) => {
-      // console.log(response.data);
-    })
-    .catch((error) => {
-      console.error('Error processing image:', error);
-    });
+    axios
+      .post("/api/feedback", { contactType, feedback, email })
+      .then((response) => {
+        // console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error processing image:", error);
+      });
     setSubmitted(true);
   };
 

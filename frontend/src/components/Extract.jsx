@@ -37,7 +37,7 @@ function Extract() {
     ).then(({ data: { text } }) => {
       text = `Category of content: ${category}\n\n${text}`;
       axios
-        .post("/generate", { prompt: text })
+        .post("/api/generate", { prompt: text })
         .then((response) => {
           const { data } = response;
 

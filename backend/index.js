@@ -32,7 +32,7 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.post('/generate', async (req, res) => {
+app.post('/api/generate', async (req, res) => {
   try {
     if (!model) {
       throw new Error("Model is not initialized");
@@ -58,7 +58,7 @@ app.post('/generate', async (req, res) => {
   }
 });
 
-app.post('/feedback', (req, res) => {
+app.post('/api/feedback', (req, res) => {
   const { contactType, feedback, email } = req.body;
 
   // Create a Nodemailer transporter using SMTP
