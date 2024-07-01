@@ -88,9 +88,10 @@ app.post('/feedback', (req, res) => {
   });
 });
 
-app.use('/*', (req, res) => {
+app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
+}
+);
 
 
 app.listen(port, () => {
