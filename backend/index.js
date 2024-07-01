@@ -1,6 +1,7 @@
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
+const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
@@ -8,7 +9,6 @@ const nodemailer = require('nodemailer');
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const app = express();
 const port = process.env.PORT || 3000;
 
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
-app.use(express.static('dist'));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.post('/generate', async (req, res) => {
   try {
