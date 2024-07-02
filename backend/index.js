@@ -1,20 +1,19 @@
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
-const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-
-
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
+const app = express();
 const port = process.env.PORT || 3000;
 
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
 let model;
 
+// Initialize the model
 async function initializeModel() {
   try {
     model = await genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -26,12 +25,15 @@ async function initializeModel() {
 
 initializeModel();
 
-app.use(bodyParser.json());
+// Middleware setup
 app.use(cors()); // Enable CORS for all routes
+app.use(bodyParser.json());
 app.use(express.json());
 
+// Serve static files from the "dist" directory
 app.use(express.static(path.join(__dirname, 'dist')));
 
+// Define API routes
 app.post('/api/generate', async (req, res) => {
   try {
     if (!model) {
@@ -88,12 +90,12 @@ app.post('/api/feedback', (req, res) => {
   });
 });
 
-app.use('*', (req, res) => {
+// Handle all other routes by serving the index.html file
+app.use('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-}
-);
+});
 
-
+// Start the server
 app.listen(port, () => {
   console.log(`Server running at ${port}`);
 });
