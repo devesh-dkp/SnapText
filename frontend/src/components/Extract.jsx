@@ -69,7 +69,7 @@ function Extract() {
 
   return (
     <>
-      <div className="flex justify-center font-bold text-black bg-white font-bold text-5xl p-5 pt-16 items-center">
+      <div className="flex justify-center font-bold text-black bg-white font-bold text-5xl pb-5 pt-16 items-center">
         Upload Image
       </div>
       <div className="flex flex-col items-center">
@@ -91,12 +91,20 @@ function Extract() {
               ) : (
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                   <svg
-                    className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                    aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
+                    width="36"
+                    height="36"
+                    viewBox="0 0 24 24"
                     fill="none"
-                    viewBox="0 0 20 16"
-                  ></svg>
+                    stroke="#000000"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M20.4 14.5L16 10 4 20" />
+                  </svg>
 
                   <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
                     <span className="font-semibold">Click to upload</span> or
@@ -152,15 +160,15 @@ function Extract() {
 
         {phase === "final" && file && (
           <div className="flex flex-col items-center">
-            <div className="flex w-full p-4">
+            <div className="flex flex-wrap w-full justify-center items-center">
               <img
                 src={URL.createObjectURL(file)}
                 alt="Uploaded"
-                className="w-1/2 h-auto rounded-lg border-2 border-gray-400 mr-4"
+                className="p-2 border-2 border-gray-400 rounded-lg w-96 h-96"
               />
-              <div className="w-1/2 p-2 text-sm text-black border-2 border-gray-400 rounded-lg">
+              <div className="p-2 text-sm text-black border-2 border-gray-400 rounded-lg w-96 h-96 overflow-auto">
                 <h3 className="font-bold mb-2">Extracted Text:</h3>
-                <p>{text}</p>
+                <p className="text-xs">{text}</p>
               </div>
             </div>
             <button
