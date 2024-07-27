@@ -29,5 +29,5 @@ The application is deployed on Vercel at [snaptext-devesh.vercel.app](https://sn
 
 Contributions are welcome! Please fork the repository and submit a pull request.
 
-##Contact
+## Contact
 If you have any questions/suggestions, feel free to reach out to me at [deveshpandey.dp2@gmail.com](mailto:deveshpandey.dp2@gmail.com).
